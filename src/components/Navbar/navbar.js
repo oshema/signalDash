@@ -7,7 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-
+import CSVreader from '../CSVreader/csvReader';
 
 function Navbar() {
 
@@ -18,20 +18,21 @@ function Navbar() {
 
     return (
         <div>
-            <AppBar>
+            <AppBar position="fixed" style={{ backgroundColor: "#2D869E" }}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
                         onClick={() => setOpen(true)}
                         edge="start"
-                        sx={{ mr: 2, ...(open && { display: 'none' }) }}
+                        sx={{ ...(open && { display: 'none' }) }}
                     >
                         <MenuIcon />
                     </IconButton>
+                    <CSVreader />
                 </Toolbar>
             </AppBar>
-            <Drawer anchor="left" variant="persistent" open={open}
+            <Drawer anchor="left" open={open} variant="persistent"
                 sx={{
                     width: drawerWidth,
                     flexShrink: 0,
@@ -44,9 +45,6 @@ function Navbar() {
                     <ChevronLeftIcon />
                 </IconButton>
             </Drawer>
-
-
-
         </div>
     )
 }

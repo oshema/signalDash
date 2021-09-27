@@ -6,6 +6,13 @@ export const useStyles = makeStyles({
         left: '95%',
         top: "15px",
         transform: "translateX(-100%)"
+    },
+    addCSVIcon: {
+        transform: 'scale(1.7)',
+
+
     }
 })
+
+
 
