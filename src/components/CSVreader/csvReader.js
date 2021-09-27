@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { storeCSVdata } from '../../redux/actions/csvActions';
+import { csvDataFailure } from '../../redux/actions/csvActions';
 import { CSVReader } from 'react-papaparse';
 import { useStyles } from '../../materialStyles/icons';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import LinearProgress from '@mui/material/LinearProgress';
 
 
 const buttonRef = React.createRef()
@@ -12,6 +14,7 @@ const buttonRef = React.createRef()
 function CSVreader() {
 
     const classes = useStyles();
+    const dispatch = useDispatch()
 
 
     const handleOpenDialog = (e) => {
@@ -23,11 +26,13 @@ function CSVreader() {
     const handleOnFileLoad = (data) => {
         console.log('---------------------------')
         console.log(data)
-        console.log('---------------------------')
+        console.log('---------------------------');
+        dispatch(storeCSVdata(data));
     }
 
     const handleOnError = (err) => {
         console.log(err)
+        dispatch(csvDataFailure(err))
     }
 
     return (

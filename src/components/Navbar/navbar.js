@@ -8,6 +8,7 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import CSVreader from '../CSVreader/csvReader';
+import { useSelector } from 'react-redux';
 
 function Navbar() {
 
@@ -15,6 +16,8 @@ function Navbar() {
     const drawerWidth = 240;
 
     const classes = useStyles();
+    const csvData = useSelector(state => state.csvData)
+    console.log("yay", csvData)
 
     return (
         <div>
