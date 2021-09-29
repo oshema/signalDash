@@ -1,7 +1,11 @@
+import modifyCsvStructure from '../../utility/modifyCsvStructure';
+
+
 export const storeCSVdata = (data) => {
+    let modifiedDataStructure = modifyCsvStructure(data)
     return {
         type: 'STORE_CSV_DATA',
-        payload: data
+        payload: modifiedDataStructure
     }
 }
 

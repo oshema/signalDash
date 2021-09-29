@@ -1,13 +1,11 @@
 import './App.css';
 import Navbar from './components/Navbar/navbar';
 
-
 function App() {
   return (
     <>
-      <div>
-        <Navbar />
-      </div>
+      <Navbar />
+      <div className="mainInfoContainer">area for general data</div>
     </>
   );
 }
