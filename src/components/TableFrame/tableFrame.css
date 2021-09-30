@@ -1,0 +1,12 @@
+.tableFrameBox{
+    width: 50%;
+    height: 500px;
+    margin: 0 auto;
+    background-color: lightcoral;
+}
+
+.tabsContainer{
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}

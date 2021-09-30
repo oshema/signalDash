@@ -11,7 +11,7 @@ import AddIcon from '@mui/icons-material/Add';
 const buttonRef = React.createRef()
 
 
-function CSVreader() {
+function CSVreader({ isOpen }) {
 
     const classes = useStyles();
     const dispatch = useDispatch()
@@ -24,9 +24,6 @@ function CSVreader() {
     }
 
     const handleOnFileLoad = (data) => {
-        console.log('---------------------------')
-        console.log(data)
-        console.log('---------------------------');
         dispatch(storeCSVdata(data));
     }
 
@@ -38,13 +35,12 @@ function CSVreader() {
     return (
         <div style={{
             position: "absolute",
-            left: "50%",
+            top: "35px",
+            left: isOpen ? "calc(50% + 120px)" : "calc(50% + 25px)",
             transform: "translateX(-50%)",
-            marginTop: "100px",
-            width: "200px",
+            transition: isOpen ? "1s" : "0.3s",
             color: "lightblue",
         }}>
-
             <CSVReader
                 ref={buttonRef}
                 onFileLoad={handleOnFileLoad}
@@ -67,16 +63,7 @@ function CSVreader() {
                             <Fab type='button' color="primary" className={classes.addCSVIcon} aria-label="add" onClick={handleOpenDialog}>
                                 <AddIcon />
                             </Fab>
-                            <div
-                                style={{
-                                    marginTop: "20px",
-                                    fontSize: "23px",
-                                }}
-                            >
-                                CSV
-                            </div>
                         </div>
-
                     </aside>
                 )}
             </CSVReader>

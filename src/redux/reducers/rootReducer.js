@@ -1,8 +1,10 @@
 import csvReducer from './csvReducer';
+import chartReducer from './chartReducer';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-    csvData: csvReducer
+    csvData: csvReducer,
+    chartData: chartReducer
 })
 
 export default rootReducer;

@@ -1,16 +1,16 @@
 
 function modifyCsvStructure(csvData) {
-    let arrangedCSVdata = {
-        round_one_group: [],
-        round_two_group: [],
-        round_three_group: [],
-        round_four_group: [],
-        round_five_group: [],
-        round_six_group: [],
-        round_seven_group: [],
-        round_eight_group: [],
-        more_than_eight_rounds: []
-    }
+    let arrangedCSVdata = [
+        { round_one_group: [], id: "1" },
+        { round_two_group: [], id: "2" },
+        { round_three_group: [], id: "3" },
+        { round_four_group: [], id: "4" },
+        { round_five_group: [], id: "5" },
+        { round_six_group: [], id: "6" },
+        { round_seven_group: [], id: "7" },
+        { round_eight_group: [], id: "8" },
+        { more_than_eight_rounds: [], id: "+" }
+    ]
     let createNewCompanyObject = true
     let companyDataObject = {}
 
@@ -57,37 +57,36 @@ function modifyCsvStructure(csvData) {
 
             switch (orderedCompanyDataObject.numberOfRounds) {
                 case 1:
-                    arrangedCSVdata.round_one_group.push(orderedCompanyDataObject);
+                    arrangedCSVdata[0].round_one_group.push(orderedCompanyDataObject);
                     break;
                 case 2:
-                    arrangedCSVdata.round_two_group.push(orderedCompanyDataObject);
+                    arrangedCSVdata[1].round_two_group.push(orderedCompanyDataObject);
                     break;
                 case 3:
-                    arrangedCSVdata.round_three_group.push(orderedCompanyDataObject);
+                    arrangedCSVdata[2].round_three_group.push(orderedCompanyDataObject);
                     break;
                 case 4:
-                    arrangedCSVdata.round_four_group.push(orderedCompanyDataObject);
+                    arrangedCSVdata[3].round_four_group.push(orderedCompanyDataObject);
                     break;
                 case 5:
-                    arrangedCSVdata.round_five_group.push(orderedCompanyDataObject);
+                    arrangedCSVdata[4].round_five_group.push(orderedCompanyDataObject);
                     break;
                 case 6:
-                    arrangedCSVdata.round_six_group.push(orderedCompanyDataObject);
+                    arrangedCSVdata[5].round_six_group.push(orderedCompanyDataObject);
                     break;
                 case 7:
-                    arrangedCSVdata.round_seven_group.push(orderedCompanyDataObject);
+                    arrangedCSVdata[6].round_seven_group.push(orderedCompanyDataObject);
                     break;
                 case 8:
-                    arrangedCSVdata.round_eight_group.push(orderedCompanyDataObject);
+                    arrangedCSVdata[7].round_eight_group.push(orderedCompanyDataObject);
                     break;
                 default:
-                    arrangedCSVdata.more_than_eight_rounds.push(orderedCompanyDataObject)
+                    arrangedCSVdata[8].more_than_eight_rounds.push(orderedCompanyDataObject)
             }
             companyDataObject = {}
             createNewCompanyObject = true
         }
     }
-
     return arrangedCSVdata;
 }
 
