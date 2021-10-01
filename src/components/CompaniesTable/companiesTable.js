@@ -29,7 +29,7 @@ function CompaniesTable({ chartData }) {
                 </TableHead>
                 <TableBody>
                     {chartData.map((company) => (
-                        <CompanyTableRow key={company.name} company={company} />
+                        <CompanyTableRow key={company.name} companyData={company} />
                     ))}
                 </TableBody>
             </Table>

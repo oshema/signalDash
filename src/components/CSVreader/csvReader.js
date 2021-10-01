@@ -6,6 +6,7 @@ import { CSVReader } from 'react-papaparse';
 import { useStyles } from '../../materialStyles/icons';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
+import Tooltip from '@mui/material/Tooltip';
 
 
 const buttonRef = React.createRef()
@@ -60,9 +61,11 @@ function CSVreader({ isOpen }) {
                                 textAlign: "center",
                             }}
                         >
-                            <Fab type='button' color="primary" className={classes.addCSVIcon} aria-label="add" onClick={handleOpenDialog}>
-                                <AddIcon />
-                            </Fab>
+                            <Tooltip title="Upload a CSV file">
+                                <Fab type='button' color="primary" className={classes.addCSVIcon} aria-label="add" onClick={handleOpenDialog}>
+                                    <AddIcon />
+                                </Fab>
+                            </Tooltip>
                         </div>
                     </aside>
                 )}
