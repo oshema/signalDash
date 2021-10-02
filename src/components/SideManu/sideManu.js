@@ -9,7 +9,7 @@ function SideManu({ openManu, setOpenManu }) {
     const classes = useStyles();
     return (
         <div>
-            <div className="sideManuContainer">
+            <div className="sideManu-container">
                 {openManu &&
                     <IconButton onClick={() => setOpenManu(false)} size="small" className={classes.chevronIcon} >
                         <ChevronLeftIcon />

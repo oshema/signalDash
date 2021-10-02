@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './companiesTable.css';
+import './chartMain.css';
 import { useStyles } from '../../materialStyles/table';
 import Table from '@mui/material/Table';
 import TableCell from '@mui/material/TableCell';
@@ -7,10 +7,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableBody from '@mui/material/TableBody';
 import TablePagination from '@mui/material/TablePagination';
-import CompanyTableRow from '../CompanyTableRow/companyTableRow';
+import ChartRow from '../ChartRow/chartRow';
 import TableContainer from '@mui/material/TableContainer';
 
-function CompaniesTable({ chartData }) {
+function ChartMain({ chartData }) {
 
     const classes = useStyles();
 
@@ -46,7 +46,7 @@ function CompaniesTable({ chartData }) {
                         {chartData
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             .map((company) => (
-                                <CompanyTableRow key={company.name} companyData={company} />
+                                <ChartRow key={company.name} companyData={company} />
                             ))}
                     </TableBody>
                 </Table>
@@ -64,4 +64,4 @@ function CompaniesTable({ chartData }) {
     )
 }
 
-export default CompaniesTable;
+export default ChartMain;

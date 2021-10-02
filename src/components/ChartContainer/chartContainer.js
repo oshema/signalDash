@@ -1,12 +1,12 @@
 import React from 'react';
-import './tableFrame.css';
+import './chartContainer.css';
 import { useSelector } from 'react-redux';
-import RoundGroupTabs from '../RoundGroupTabs/roundGroupTabs';
-import CompaniesTable from '../CompaniesTable/companiesTable';
+import RoundGroupTabs from '../ChartRoundTabs/chartRoundTabs';
+import ChartMain from '../ChartMain/chartMain';
 import Paper from '@mui/material/Paper';
 
 
-function TableFrame() {
+function ChartContainer() {
 
 
     const csvData = useSelector(state => state.csvData)
@@ -15,30 +15,30 @@ function TableFrame() {
 
     return (
         <div className="chartContainer">
-            <div className="chartMarginLeft">
+            <div className="chartContainer-leftMargin">
 
             </div>
             <Paper sx={{ width: '100%', overflow: 'hidden' }}>
 
                 {!csvData.error &&
                     <>
-                        <div className="tabsContainer">
+                        <div className="chartContainer-tabs">
                             {csvDataByGroups.map((roundGroup) => (
                                 <RoundGroupTabs key={roundGroup.id} roundGroup={roundGroup} />
                             ))}
                         </div>
                         <div>
-                            <CompaniesTable chartData={chartData.roundGroupData} />
+                            <ChartMain chartData={chartData.roundGroupData} />
                         </div>
 
                     </>
                 }
             </Paper>
-            <div className="chartMarginRight">
+            <div className="chartContainer-rightMargin">
 
             </div>
         </div>
     )
 }
 
-export default TableFrame;
+export default ChartContainer;

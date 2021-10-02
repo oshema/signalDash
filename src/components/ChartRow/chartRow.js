@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './companyTableRow.css';
+import './chartRow.css';
 import { useStyles } from '../../materialStyles/table';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
@@ -11,8 +11,7 @@ import { Button } from '@material-ui/core';
 import Tooltip from '@mui/material/Tooltip';
 
 
-
-function CompanyTableRow({ companyData }) {
+function ChartRow({ companyData }) {
 
     const classes = useStyles();
     const [open, setOpen] = useState(false)
@@ -82,4 +81,4 @@ function CompanyTableRow({ companyData }) {
     )
 }
 
-export default CompanyTableRow
+export default ChartRow;

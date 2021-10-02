@@ -1,4 +1,5 @@
 import React from 'react';
+import './csvReader.css';
 import { useDispatch } from 'react-redux';
 import { storeCSVdata } from '../../redux/actions/csvActions';
 import { csvDataFailure } from '../../redux/actions/csvActions';
@@ -8,9 +9,7 @@ import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import Tooltip from '@mui/material/Tooltip';
 
-
 const buttonRef = React.createRef()
-
 
 function CSVreader({ isOpen }) {
 
@@ -34,14 +33,7 @@ function CSVreader({ isOpen }) {
     }
 
     return (
-        <div style={{
-            position: "absolute",
-            top: "35px",
-            left: isOpen ? "calc(50% + 120px)" : "calc(50% + 25px)",
-            transform: "translateX(-50%)",
-            transition: isOpen ? "1s" : "0.3s",
-            color: "lightblue",
-        }}>
+        <div className={isOpen ? "addCSVbutton-container isOpen" : "addCSVbutton-container isClosed"}>
             <CSVReader
                 ref={buttonRef}
                 onFileLoad={handleOnFileLoad}
@@ -50,24 +42,13 @@ function CSVreader({ isOpen }) {
                 progressBarColor='red'
             >
                 {({ file }) => (
-                    <aside
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <div
-                            style={{
-                                textAlign: "center",
-                            }}
-                        >
-                            <Tooltip title="Upload a CSV file">
-                                <Fab type='button' color="primary" className={classes.addCSVIcon} aria-label="add" onClick={handleOpenDialog}>
-                                    <AddIcon />
-                                </Fab>
-                            </Tooltip>
-                        </div>
-                    </aside>
+                    <div>
+                        <Tooltip title="Upload a CSV file">
+                            <Fab type='button' color="primary" className={classes.addCSVIcon} aria-label="add" onClick={handleOpenDialog}>
+                                <AddIcon />
+                            </Fab>
+                        </Tooltip>
+                    </div>
                 )}
             </CSVReader>
         </div >

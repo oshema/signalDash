@@ -1,15 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import loadGroupChart from '../../redux/actions/chartActions';
-import { storeCSVdata } from '../../redux/actions/csvActions';
 import Button from '@mui/material/Button';
 
-function RoundGroupTabs({ roundGroup }) {
+function ChartRoundTabs({ roundGroup }) {
 
     const roundGroupData = Object.values(roundGroup)[0];
     const dispatch = useDispatch();
 
-    console.log(roundGroup)
     const handleGroupChart = () => {
         dispatch(loadGroupChart(roundGroupData))
     }
@@ -23,4 +21,4 @@ function RoundGroupTabs({ roundGroup }) {
     )
 }
 
-export default RoundGroupTabs
+export default ChartRoundTabs

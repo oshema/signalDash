@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar/navbar';
-import TableFrame from './components/TableFrame/tableFrame';
+import ChartContainer from './components/ChartContainer/chartContainer';
 import SideManu from './components/SideManu/sideManu';
 import CSVreader from './components/CSVreader/csvReader';
 
@@ -11,16 +11,16 @@ function App() {
   const [openManu, setOpenManu] = useState(false);
 
   return (
-    <div className="appContainer">
-      <div className={openManu ? "openSideManu" : "shrinkedSideManu"}>
+    <div className="app-container">
+      <div className={openManu ? "app-sideManu-open" : "app-sideManu-shrinked"}>
         <SideManu openManu={openManu} setOpenManu={setOpenManu} />
       </div>
-      <div className="appBodyContainer">
+      <div className="app-body-container">
         <CSVreader isOpen={openManu} />
         <Navbar setOpenManu={setOpenManu} />
-        <div className="mainInfoContainer">
+        <div className="app-body-topInfo-container">
         </div>
-        <TableFrame />
+        <ChartContainer />
       </div>
     </div >
   );

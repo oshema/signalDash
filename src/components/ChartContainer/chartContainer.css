@@ -1,16 +1,16 @@
 .chartContainer{
     display: flex;
 }
-.tabsContainer{
+.chartContainer-tabs{
     display: flex;
     overflow: hidden;
     width: 100%;
 }
 
-.chartMarginLeft{
+.chartContainer-leftMargin{
     margin-left:50px ;
 }
 
-.chartMarginRight{
+.chartContainer-rightMargin{
     margin-right: 50px;
 }

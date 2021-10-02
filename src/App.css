@@ -1,26 +1,26 @@
 
-.appContainer{
+.app-container{
   display: flex;
   width: 100%;
 }
 
-.openSideManu{
+.app-sideManu-open{
   width: 240px;
   transition: 1s;
 }
 
-.shrinkedSideManu{
+.app-sideManu-shrinked{
   width: 50px;
   transition: 0.3s;
   background-color: rgb(189, 227, 238);
 }
 
-.appBodyContainer{
+.app-body-container{
   width: 100%;
   
 }
 
-.mainInfoContainer{
+.app-body-topInfo-container{
   display: flex;
   justify-content: space-between;
   width: 100%;
