@@ -13,6 +13,5 @@ export const useStyles = makeStyles({
     tableRow: {
     },
     tableCell: {
-        minWidth: "150px"
     }
 })

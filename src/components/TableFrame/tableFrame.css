@@ -1,12 +1,16 @@
-.tableFrameBox{
-    width: 50%;
-    height: 500px;
-    margin: 0 auto;
-    background-color: lightcoral;
+.chartContainer{
+    display: flex;
 }
-
 .tabsContainer{
     display: flex;
     overflow: hidden;
     width: 100%;
+}
+
+.chartMarginLeft{
+    margin-left:50px ;
+}
+
+.chartMarginRight{
+    margin-right: 50px;
 }
