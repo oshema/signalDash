@@ -29,6 +29,7 @@ function modifyCsvStructure(csvData) {
             companyDataObject.subSector = currentRound.data[12];
             companyDataObject.employees = currentRound.data[3];
             companyDataObject.rounds = [{
+                roundNumber: "",
                 invesetment: currentRound.data[15],
                 date: currentRound.data[0],
                 leadInvestor: currentRound.data[5],
@@ -45,6 +46,7 @@ function modifyCsvStructure(csvData) {
         if (nextRound && currentRound.data[1] === nextRound.data[1]) {
             companyDataObject.numberOfRounds += 1;
             companyDataObject.rounds.push({
+                roundNumber: "",
                 invesetment: nextRound.data[15],
                 date: nextRound.data[0],
                 leadInvestor: nextRound.data[5],
@@ -101,12 +103,14 @@ const arrangedRoundsByDates = companyObject => {
     })
     let roundsOrderedByDate = roundsNewFormat.sort((a, b) => a.date - b.date);
 
-    let roundsWithSimpleDate = roundsOrderedByDate.map(round => {
-        const simpleDate = round.date.toLocaleDateString('en-GB')
-        round.date = simpleDate
-        return round;
-    })
-    companyObject.rounds = roundsWithSimpleDate;
+    companyObject.rounds = roundsOrderedByDate;
+
+    for (let i = 0; i < companyObject.rounds.length; i++) {
+        let simpleDate = companyObject.rounds[i].date.toLocaleDateString('en-GB')
+        companyObject.rounds[i].date = simpleDate;
+        companyObject.rounds[i].roundNumber = i + 1
+    }
+
     return companyObject;
 }
 

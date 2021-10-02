@@ -7,8 +7,9 @@ import IconButton from '@mui/material/IconButton';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Collapse from '@mui/material/Collapse';
-import { Button } from '@material-ui/core';
+import { Button, Divider } from '@material-ui/core';
 import Tooltip from '@mui/material/Tooltip';
+import CompanyRoundInfo from '../CompanyRoundInfo/companyRoundInfo';
 
 
 function ChartRow({ companyData }) {
@@ -32,6 +33,8 @@ function ChartRow({ companyData }) {
             setIsMultiLeads(false)
         }
     }
+
+    console.log(companyData, "<---")
 
     return (
         <>
@@ -71,11 +74,20 @@ function ChartRow({ companyData }) {
                 <TableCell align="center">not yet</TableCell>
             </TableRow>
             <TableRow >
-                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-                    <Collapse in={open} timeout="auto" unmountOnExit>
-                        sfsfsf
-                    </Collapse>
-                </TableCell>
+                <>
+                    <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+                        <Collapse in={open} timeout="auto" unmountOnExit >
+                            <div style={{ display: "flex", flexWrap: "wrap" }}>
+                                {companyData.rounds.map(round => (
+                                    <div key={round.roundNumber}>
+                                        <CompanyRoundInfo roundInfo={round} />
+                                    </div>
+                                ))}
+                            </div>
+                        </Collapse>
+                    </TableCell>
+
+                </>
             </TableRow>
         </>
     )

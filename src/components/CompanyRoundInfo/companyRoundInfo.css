@@ -1,0 +1,26 @@
+.companyRoundInfo-container{
+    display: flex;
+    height: 220px;
+    width: 350px;
+    border: 1px solid black;
+}
+
+.inline{
+    display: flex;
+}
+
+.scoreData{
+    margin-left: 10px;
+    
+}
+
+.rawData-lead{
+    max-width: 150px;
+    max-height: 100px;
+    overflow: scroll;
+}
+.rawData-investors{
+    max-width: 150px;
+    max-height: 100px;
+    overflow: scroll;
+}
