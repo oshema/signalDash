@@ -35,7 +35,6 @@ function CompanyRoundInfo({ roundInfo }) {
         } else {
             setIsMultiInvestor(false)
         }
-
     }
 
     return (
@@ -77,12 +76,12 @@ function CompanyRoundInfo({ roundInfo }) {
                                 </div>
                                 :
                                 <div >
-                                    {roundInfo.leadInvestor}
+                                    {roundInfo.investors}
                                 </div>
                             }
                         </div>
                     </div>
-                    <div>TSLI...</div>
+                    <div>{`TSLI: ${roundInfo.TSLI}`}</div>
                 </div>
                 <div className="scoreData">
                     <div>IGR Score</div>

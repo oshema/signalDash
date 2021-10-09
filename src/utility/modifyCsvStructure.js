@@ -51,11 +51,13 @@ function modifyCsvStructure(csvData) {
                 date: nextRound.data[0],
                 leadInvestor: nextRound.data[5],
                 investors: nextRound.data[6],
+                TSLI: "",
                 IGR: "Need to be caculated"
             })
             createNewCompanyObject = false
         } else {
-            let orderedCompanyDataObject = arrangedRoundsByDates(companyDataObject)
+            let orderedCompanyDataObject = arrangedRoundsByDates(companyDataObject);
+            caculateTSLI(orderedCompanyDataObject.rounds);
 
             switch (orderedCompanyDataObject.numberOfRounds) {
                 case 1:
@@ -112,6 +114,17 @@ const arrangedRoundsByDates = companyObject => {
     }
 
     return companyObject;
+}
+
+const caculateTSLI = (rounds) => {
+    for (let i = 1; i < rounds.length; i++) {
+        let currentRoundDateArray = rounds[i].date.split("/");
+        let previousRoundDateArray = rounds[i - 1].date.split("/");
+        let months = (currentRoundDateArray[2] - previousRoundDateArray[2]) * 12;
+        months -= Number(previousRoundDateArray[1]);
+        months += Number(currentRoundDateArray[1])
+        rounds[i].TSLI = months;
+    }
 }
 
 export default modifyCsvStructure;
