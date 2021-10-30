@@ -17,7 +17,6 @@ function modifyCsvStructure(csvData) {
     for (let i = 1; i < csvData.length; i++) {
         let currentRound = csvData[i]
         let nextRound = csvData[i + 1]
-
         if (createNewCompanyObject) {
             //creating new data object for company.
             companyDataObject.name = currentRound.data[1];
@@ -30,34 +29,34 @@ function modifyCsvStructure(csvData) {
             companyDataObject.employees = currentRound.data[3];
             companyDataObject.rounds = [{
                 roundNumber: "",
-                invesetment: currentRound.data[15],
+                investment: currentRound.data[15],
                 date: currentRound.data[0],
                 leadInvestor: currentRound.data[5],
                 investors: currentRound.data[6],
-                IGR: "Need to be caculated"
             }];
             companyDataObject.companyValuation = currentRound.data[17]
-            companyDataObject.fundingPaceScore = "Need to be caculated";
-            companyDataObject.financeScore = "Need to be caculated";
             companyDataObject.CEOscore = currentRound.data[7];
             companyDataObject.leadScore = currentRound.data[8];
             companyDataObject.previousLeadScore = currentRound.data[9]
+            companyDataObject.score = ""
         }
         if (nextRound && currentRound.data[1] === nextRound.data[1]) {
             companyDataObject.numberOfRounds += 1;
             companyDataObject.rounds.push({
                 roundNumber: "",
-                invesetment: nextRound.data[15],
+                investment: nextRound.data[15],
                 date: nextRound.data[0],
                 leadInvestor: nextRound.data[5],
                 investors: nextRound.data[6],
                 TSLI: "",
-                IGR: "Need to be caculated"
+                IGR: "Need to be caculated",
+                finance: 0,
             })
             createNewCompanyObject = false
         } else {
             let orderedCompanyDataObject = arrangedRoundsByDates(companyDataObject);
             caculateTSLI(orderedCompanyDataObject.rounds);
+            caculateRoundMultiple(orderedCompanyDataObject.rounds)
 
             switch (orderedCompanyDataObject.numberOfRounds) {
                 case 1:
@@ -126,5 +125,15 @@ const caculateTSLI = (rounds) => {
         rounds[i].TSLI = months;
     }
 }
+
+const caculateRoundMultiple = (rounds) => {
+    for (let i = 1; i < rounds.length; i++) {
+        let currentRoundInvestment = rounds[i].investment
+        let previousRoundInvestment = rounds[i - 1].investment
+        let multiplier = (currentRoundInvestment / previousRoundInvestment)
+        rounds[i].multiplier = Math.round(multiplier * 100) / 100;
+    }
+}
+
 
 export default modifyCsvStructure;

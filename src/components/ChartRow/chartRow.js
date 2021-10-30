@@ -20,8 +20,10 @@ function ChartRow({ companyData }) {
     const [multiLeadsPreview, setMultiLeadsPreview] = useState("")
 
     useEffect(() => {
-        const leadInvestors = companyData.rounds[companyData.rounds.length - 1].leadInvestor
-        checkMultiLeadInvestors(leadInvestors)
+        const leadInvestors = companyData.rounds[companyData.rounds.length - 1].leadInvestor;
+        checkMultiLeadInvestors(leadInvestors);
+        caculateTVR();
+        caculateFinance();
     }, [])
 
     const checkMultiLeadInvestors = (leadInvestors) => {
@@ -34,7 +36,52 @@ function ChartRow({ companyData }) {
         }
     }
 
-    //console.log(companyData, "<---")
+    const caculateTVR = () => {
+        //TSLI - Time since last investment
+        let TSLIsum = 0
+        for (let i = 1; i < companyData.rounds.length; i++) {
+            TSLIsum += companyData.rounds[i].TSLI;
+            let avgTSLIforRound = TSLIsum / i
+            if (avgTSLIforRound < 7) companyData.rounds[i].TVR = 10;
+            else if (avgTSLIforRound > 23) companyData.rounds[i].TVR = 0;
+            // caculate each round avg TSLI(6-24) and return points between 0-10
+            else companyData.rounds[i].TVR = 10 - ((avgTSLIforRound - 6) * 0.555)
+        }
+    }
+
+
+    //TODO: Need to fix missing finance score in some rounds.
+    const caculateFinance = () => {
+        let financeTotal = +companyData.rounds[0].investment;
+        for (let i = 1; i < companyData.rounds.length; i++) {
+            financeTotal += +companyData.rounds[i].investment;
+            switch (companyData.rounds[i].roundNumber) {
+                case 2:
+                    if (financeTotal > 15) companyData.rounds[i].finance = 5;
+                    break;
+                case 3:
+                    if (financeTotal > 35) companyData.rounds[i].finance = 5;
+                    break;
+                case 4:
+                    if (financeTotal > 70) companyData.rounds[i].finance = 5;
+                    break;
+                case 5:
+                    if (financeTotal > 110) companyData.rounds[i].finance = 5;
+                    break;
+                case 6:
+                    if (financeTotal > 170) companyData.rounds[i].finance = 5;
+                    break;
+                case 7:
+                    if (financeTotal > 250) companyData.rounds[i].finance = 5;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+
+
 
     return (
         <>
@@ -80,7 +127,7 @@ function ChartRow({ companyData }) {
                             <div style={{ display: "flex", flexWrap: "wrap" }}>
                                 {companyData.rounds.map(round => (
                                     <div key={round.roundNumber}>
-                                        <CompanyRoundInfo roundInfo={round} />
+                                        <CompanyRoundInfo roundInfo={round} allRoundsInfo={companyData.rounds} />
                                     </div>
                                 ))}
                             </div>
