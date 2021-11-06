@@ -8,7 +8,6 @@ import Paper from '@mui/material/Paper';
 
 function ChartContainer() {
 
-
     const csvData = useSelector(state => state.csvData)
     const csvDataByGroups = csvData.csvData;
     const chartData = useSelector(state => state.chartData)
@@ -16,10 +15,8 @@ function ChartContainer() {
     return (
         <div className="chartContainer">
             <div className="chartContainer-leftMargin">
-
             </div>
             <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-
                 {!csvData.error &&
                     <>
                         <div className="chartContainer-tabs">
@@ -30,12 +27,10 @@ function ChartContainer() {
                         <div>
                             <ChartMain chartData={chartData.roundGroupData} />
                         </div>
-
                     </>
                 }
             </Paper>
             <div className="chartContainer-rightMargin">
-
             </div>
         </div>
     )

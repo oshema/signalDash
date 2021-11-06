@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './chartMain.css';
 import { useStyles } from '../../materialStyles/table';
 import Table from '@mui/material/Table';
@@ -9,6 +9,7 @@ import TableBody from '@mui/material/TableBody';
 import TablePagination from '@mui/material/TablePagination';
 import ChartRow from '../ChartRow/chartRow';
 import TableContainer from '@mui/material/TableContainer';
+import { IGRcaculation, caculateTVR, caculateFinance, caculateTeamScore, caculateFinalScore } from '../../utility/calculation';
 
 function ChartMain({ chartData }) {
 
@@ -16,6 +17,7 @@ function ChartMain({ chartData }) {
 
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [caculatedGroupData, setCaculatedGroupData] = useState('')
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -25,6 +27,20 @@ function ChartMain({ chartData }) {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
+
+    useEffect(() => {
+        const groupData = chartData.map(company => {
+            company.rounds.forEach(round => {
+                round.IGR = IGRcaculation(round);
+            })
+            caculateTVR(company);
+            caculateFinance(company);
+            caculateTeamScore(company);
+            caculateFinalScore(company);
+            return company
+        })
+        setCaculatedGroupData(groupData)
+    }, [chartData])
 
     return (
         <>
@@ -36,18 +52,20 @@ function ChartMain({ chartData }) {
                             <TableCell align="left">Name</TableCell>
                             <TableCell align="left">Established</TableCell>
                             <TableCell align="left">Round</TableCell>
-                            <TableCell align="left">Total Raised</TableCell>
+                            <TableCell align="left">TotalRaised</TableCell>
                             <TableCell align="left">Lead</TableCell>
                             <TableCell align="left">CEO</TableCell>
                             <TableCell align="center">Score</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {chartData
-                            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            .map((company) => (
-                                <ChartRow key={company.name} companyData={company} />
-                            ))}
+                        {caculatedGroupData
+                            && caculatedGroupData
+                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                .sort((a, b) => b.score - a.score)
+                                .map((company) => (
+                                    <ChartRow key={company.name} companyData={company} />))
+                        }
                     </TableBody>
                 </Table>
             </TableContainer>

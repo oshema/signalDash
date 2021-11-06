@@ -12,5 +12,8 @@ export const useStyles = makeStyles({
     tableRow: {
     },
     tableCell: {
+    },
+    tooltip: {
+        fontSize: "13px!important"
     }
 })
