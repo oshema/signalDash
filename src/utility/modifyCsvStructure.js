@@ -13,7 +13,6 @@ function modifyCsvStructure(csvData) {
     ]
     let createNewCompanyObject = true
     let companyDataObject = {}
-    let p = 0
     for (let i = 1; i < csvData.length - 1; i++) {
         let currentRound = csvData[i]
         let nextRound = csvData[i + 1]
