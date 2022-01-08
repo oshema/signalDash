@@ -42,6 +42,8 @@ function ChartMain({ chartData }) {
         setCaculatedGroupData(groupData)
     }, [chartData])
 
+    console.log(caculatedGroupData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage), "hhh")
+
     return (
         <>
             <TableContainer sx={{ maxHeight: 440 }}>
@@ -61,8 +63,8 @@ function ChartMain({ chartData }) {
                     <TableBody>
                         {caculatedGroupData
                             && caculatedGroupData
-                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .sort((a, b) => b.score - a.score)
+                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((company) => (
                                     <ChartRow key={company.name} companyData={company} />))
                         }

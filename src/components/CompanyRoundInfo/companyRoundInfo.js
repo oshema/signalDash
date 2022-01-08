@@ -140,11 +140,12 @@ function CompanyRoundInfo({ roundInfo, CEOscore, leadScore, preLeadScore }) {
                         title={
                             <>
                                 <Typography className={classes.tooltip} >IGR - Investment Growth Relevance (25%)</Typography>
-                                <Typography className={classes.tooltip}>Formula - multiplier ({`${roundInfo.multiplier}`}) / TSLI ({`${roundInfo.TSLI}`}) * monthly factor</Typography>
+                                <Typography className={classes.tooltip} >IGR investment quality calc - Multiplier ({`${roundInfo.multiplier}`}) / TSLI ({`${roundInfo.TSLI}`})</Typography>
+                                <Typography className={classes.tooltip}>IGR Formula - 'investment quality calc'  * monthly factor</Typography>
                                 <Typography className={classes.tooltip}>'Multiplier' - investment ratio between two rounds</Typography>
                                 <Typography className={classes.tooltip}>'Monthly factor' - value between 1-3 based on TSLI</Typography>
-                                <Typography className={classes.tooltip}>*Finale IGR score can be up to 15 points if formula result is below '0.5'</Typography>
-                                <Typography className={classes.tooltip}>*Finlae IGR score can be up to 25 points if formula result is above '0.5'</Typography>
+                                <Typography className={classes.tooltip}>*Finale IGR score can be up to 15 points if 'investment quality calc' result is below '0.5'</Typography>
+                                <Typography className={classes.tooltip}>*Finlae IGR score can be up to 25 points if 'investment quality calc' result is above '0.5'</Typography>
                             </>
                         }
                     >
