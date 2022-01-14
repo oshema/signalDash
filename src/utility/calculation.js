@@ -135,8 +135,8 @@ export const caculateLeadsScore = (round) => {
 
 export const caculateFinalScore = (companyData) => {
     const lastRound = companyData.rounds[companyData.rounds.length - 1];
-    const finalIGR = lastRound.IGR;
-    const finalTVR = lastRound.TVR;
+    const finalIGR = lastRound.IGR ? lastRound.IGR : 0;
+    const finalTVR = lastRound.TVR ? lastRound.TVR : 0;
     const finalFinance = lastRound.finance ? lastRound.finance : 0
     const { CEOscore } = companyData;
     const { leadScore } = lastRound;
