@@ -18,25 +18,25 @@ function modifyCsvStructure(csvData) {
         let nextRound = csvData[i + 1]
         if (createNewCompanyObject) {
             //creating new data object for company.
-            companyDataObject.name = currentRound.data[0] //currentRound.data[1]; 
-            companyDataObject.established = currentRound.data[6]; //currentRound.data[2];
+            companyDataObject.name = currentRound.data[0];
+            companyDataObject.established = currentRound.data[6];
             companyDataObject.numberOfRounds = 1;
-            companyDataObject.totalRaised = currentRound.data[7]; //currentRound.data[18];
-            companyDataObject.CEO = currentRound.data[15]; //currentRound.data[4];
-            companyDataObject.description = currentRound.data[2]; //currentRound.data[13];
-            companyDataObject.subSector = currentRound.data[3]; //currentRound.data[12];
-            companyDataObject.employees = currentRound.data[5]; //currentRound.data[3];
+            companyDataObject.totalRaised = currentRound.data[7];
+            companyDataObject.CEO = currentRound.data[15];
+            companyDataObject.description = currentRound.data[2];
+            companyDataObject.subSector = currentRound.data[3];
+            companyDataObject.employees = currentRound.data[5];
             companyDataObject.rounds = [{
                 roundNumber: "",
-                investment: currentRound.data[12], //currentRound.data[15]
-                date: currentRound.data[9], //currentRound.data[0]
-                leadInvestor: currentRound.data[14], //currentRound.data[5]
-                investors: currentRound.data[13], //currentRound.data[6]
+                investment: currentRound.data[12],
+                date: currentRound.data[9],
+                leadInvestor: currentRound.data[14],
+                investors: currentRound.data[13],
+                leadScore: currentRound.data[17],
+                previousLeadScore: 0,
             }];
-            companyDataObject.companyValuation = "" //currentRound.data[17]
-            companyDataObject.CEOscore = currentRound.data[16]; //currentRound.data[7]
-            companyDataObject.leadScore = currentRound.data[17]; //currentRound.data[8]
-            companyDataObject.previousLeadScore = currentRound.data[18] //currentRound.data[8]
+            companyDataObject.companyValuation = "";
+            companyDataObject.CEOscore = currentRound.data[16];
             companyDataObject.score = ""
         }
         if (nextRound && currentRound.data[0] === nextRound.data[0]) {
@@ -47,6 +47,8 @@ function modifyCsvStructure(csvData) {
                 date: nextRound.data[9],
                 leadInvestor: nextRound.data[14],
                 investors: nextRound.data[13],
+                leadScore: nextRound.data[17],
+                previousLeadScore: currentRound.data[17], // Taking the lead score from previous round
                 TSLI: "",
                 IGR: "Need to be caculated",
                 finance: 0,

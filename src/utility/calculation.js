@@ -92,9 +92,25 @@ export const caculateFinance = (companyData) => {
     }
 }
 
-export const caculateTeamScore = (companyData) => {
+export const caculateCEOScore = (companyData) => {
     const rankValue = {
-        CEOandLead: {
+        CEO: {
+            AAA: 21.84,
+            AA: 16.38,
+            A: 10.92,
+            B: 5.46
+        },
+    }
+    companyData.CEOscore ?
+        companyData.CEOscore = rankValue.CEO[companyData.CEOscore]
+        :
+        companyData.CEOscore = 0;
+}
+
+export const caculateLeadsScore = (round) => {
+
+    const rankValue = {
+        lead: {
             AAA: 21.84,
             AA: 16.38,
             A: 10.92,
@@ -107,28 +123,24 @@ export const caculateTeamScore = (companyData) => {
             B: 4.08
         }
     }
-    companyData.CEOscore ?
-        companyData.CEOscore = rankValue.CEOandLead[companyData.CEOscore]
+    round.leadScore ?
+        round.leadScore = rankValue.lead[round.leadScore]
         :
-        companyData.CEOscore = 0;
-    companyData.leadScore ?
-        companyData.leadScore = rankValue.CEOandLead[companyData.leadScore]
+        round.leadScore = 0;
+    round.previousLeadScore ?
+        round.previousLeadScore = rankValue.previousLead[round.previousLeadScore]
         :
-        companyData.leadScore = 0;
-    companyData.previousLeadScore ?
-        companyData.previousLeadScore = rankValue.previousLead[companyData.previousLeadScore]
-        :
-        companyData.previousLeadScore = 0;
+        round.previousLeadScore = 0;
 }
 
 export const caculateFinalScore = (companyData) => {
     const lastRound = companyData.rounds[companyData.rounds.length - 1];
     const finalIGR = lastRound.IGR;
     const finalTVR = lastRound.TVR;
-    const finalFinance = lastRound.finalfinance ? lastRound.finance : 0
+    const finalFinance = lastRound.finance ? lastRound.finance : 0
     const { CEOscore } = companyData;
-    const { leadScore } = companyData;
-    const { previousLeadScore } = companyData
+    const { leadScore } = lastRound;
+    const { previousLeadScore } = lastRound;
     const score = finalIGR + finalTVR + finalFinance + CEOscore + leadScore + previousLeadScore;
     const finalScore = Math.round(score * 100) / 100
     companyData.score = finalScore;

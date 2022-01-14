@@ -9,7 +9,7 @@ import TableBody from '@mui/material/TableBody';
 import TablePagination from '@mui/material/TablePagination';
 import ChartRow from '../ChartRow/chartRow';
 import TableContainer from '@mui/material/TableContainer';
-import { IGRcaculation, caculateTVR, caculateFinance, caculateTeamScore, caculateFinalScore } from '../../utility/calculation';
+import { IGRcaculation, caculateTVR, caculateFinance, caculateLeadsScore, caculateCEOScore, caculateFinalScore } from '../../utility/calculation';
 
 function ChartMain({ chartData }) {
 
@@ -30,19 +30,21 @@ function ChartMain({ chartData }) {
 
     useEffect(() => {
         const groupData = chartData.map(company => {
+            if (company.name == 'Sorbet') console.log('aaaaaaaa', company, "aaaaaaaaa")
             company.rounds.forEach(round => {
                 round.IGR = IGRcaculation(round);
+                caculateLeadsScore(round)
+
             })
             caculateTVR(company);
             caculateFinance(company);
-            caculateTeamScore(company);
+            caculateCEOScore(company);
             caculateFinalScore(company);
             return company
         })
         setCaculatedGroupData(groupData)
     }, [chartData])
 
-    console.log(caculatedGroupData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage), "hhh")
 
     return (
         <>

@@ -74,7 +74,7 @@ function ChartRow({ companyData }) {
                             <div style={{ display: "flex", flexWrap: "wrap" }}>
                                 {companyData.rounds.map(round => (
                                     <div key={round.roundNumber}>
-                                        <CompanyRoundInfo roundInfo={round} CEOscore={companyData.CEOscore} leadScore={companyData.leadScore} preLeadScore={companyData.previousLeadScore} />
+                                        <CompanyRoundInfo roundInfo={round} CEOscore={companyData.CEOscore} />
                                     </div>
                                 ))}
                             </div>

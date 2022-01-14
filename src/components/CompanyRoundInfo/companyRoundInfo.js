@@ -9,7 +9,7 @@ import { Button, Tooltip } from '@material-ui/core';
 import Typography from '@mui/material/Typography';
 
 
-function CompanyRoundInfo({ roundInfo, CEOscore, leadScore, preLeadScore }) {
+function CompanyRoundInfo({ roundInfo, CEOscore }) {
 
     const classes = useStyles();
 
@@ -183,8 +183,8 @@ function CompanyRoundInfo({ roundInfo, CEOscore, leadScore, preLeadScore }) {
                         <div>{`Finance Score: ${roundInfo.finance}`}</div>
                     </Tooltip>
                     <div>{`CEO score: ${CEOscore}`}</div>
-                    <div>{`Lead Score ${leadScore}`}</div>
-                    <div>{`Previous Lead Score ${preLeadScore}`}</div>
+                    <div>{`Lead Score ${roundInfo.leadScore}`}</div>
+                    <div>{`Previous Lead Score ${roundInfo.previousLeadScore}`}</div>
                 </div>
             </div>
         </>
