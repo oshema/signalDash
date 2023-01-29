@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^12.1.10",
     "circletype": "^2.3.0",
     "express": "^4.17.1",
+    "gh-pages": "^5.0.0",
     "react": "^17.0.2",
     "react-arc-text": "^1.0.5",
     "react-dom": "^17.0.2",
@@ -24,6 +25,7 @@
     "redux-thunk": "^2.3.0",
     "web-vitals": "^1.0.1"
   },
+  "homepage": "https://oshema.github.io/signalDash/",
   "scripts": {
     "start": "node server/server.js",
     "dev": "react-scripts start",
