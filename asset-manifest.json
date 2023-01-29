@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/signalDash/static/css/main.1d27d1bc.chunk.css",
+    "main.js": "/signalDash/static/js/main.61c20f6e.chunk.js",
+    "main.js.map": "/signalDash/static/js/main.61c20f6e.chunk.js.map",
+    "runtime-main.js": "/signalDash/static/js/runtime-main.af6553bb.js",
+    "runtime-main.js.map": "/signalDash/static/js/runtime-main.af6553bb.js.map",
+    "static/js/2.f85cc312.chunk.js": "/signalDash/static/js/2.f85cc312.chunk.js",
+    "static/js/2.f85cc312.chunk.js.map": "/signalDash/static/js/2.f85cc312.chunk.js.map",
+    "index.html": "/signalDash/index.html",
+    "static/css/main.1d27d1bc.chunk.css.map": "/signalDash/static/css/main.1d27d1bc.chunk.css.map",
+    "static/js/2.f85cc312.chunk.js.LICENSE.txt": "/signalDash/static/js/2.f85cc312.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.af6553bb.js",
+    "static/js/2.f85cc312.chunk.js",
+    "static/css/main.1d27d1bc.chunk.css",
+    "static/js/main.61c20f6e.chunk.js"
+  ]
+}
